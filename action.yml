@@ -1,0 +1,19 @@
+name: "cargo-deny"
+description: "Help manage Cargo crate dependencies and validate licenses"
+author: "Embark Studios"
+
+branding:
+  icon: "slash"
+  color: "red"
+
+inputs:
+  command:
+    description: "The command to run with cargo-deny"
+    required: false
+    default: "check"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.command }}
