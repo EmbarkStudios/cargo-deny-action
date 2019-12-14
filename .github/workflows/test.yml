@@ -11,4 +11,4 @@ jobs:
         run: docker build -t test-cargo-deny .
 
       - name: Run Docker image
-        run: docker run -t test-cargo-deny --context test/ check
+        run: docker run -v ${PWD}:/test --workdir /test test-cargo-deny check
