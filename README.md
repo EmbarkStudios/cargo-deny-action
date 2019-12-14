@@ -10,7 +10,7 @@ GitHub Action for running [`cargo-deny`](https://github.com/EmbarkStudios/cargo-
 
 ## Usage
 
-Create a `deny.toml` file in the root of the repo to use as rules for the action. [Example](https://github.com/EmbarkStudios/cargo-deny/blob/master/deny.toml).
+Create a `deny.toml` file in the root of the repo to use as rules for the action ([example](https://github.com/EmbarkStudios/cargo-deny/blob/master/deny.toml)).
 See [`cargo-deny`](https://github.com/EmbarkStudios/cargo-deny) for instructions and details of the format and capabilities.
 
 This action will run `cargo-deny check` and report failure if any banned crates or disallowed open souce licenses are found used in the crate or its dependencies.
