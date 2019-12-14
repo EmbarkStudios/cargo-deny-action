@@ -1,4 +1,4 @@
-# ❌ cargo-deny-action
+# ❌ cargo-deny GitHub Action
 
 [![Build Status](https://github.com/EmbarkStudios/cargo-deny-action/workflows/Test/badge.svg)](https://github.com/EmbarkStudios/cargo-deny-action/actions?workflow=Test)
 [![Contributor Covenant](https://img.shields.io/badge/contributor%20covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
@@ -7,6 +7,26 @@
 GitHub Action for running [`cargo-deny`](https://github.com/EmbarkStudios/cargo-deny) to help manage Cargo crate dependencies and validate licenses.
 
 🚧 This repo is still work-in-progress and unstable, please do not rely on it yet 🚧
+
+## Usage
+
+Create a `deny.toml` file in the root of the repo to use as rules for the action. [Example](https://github.com/EmbarkStudios/cargo-deny/blob/master/deny.toml).
+See [`cargo-deny`](https://github.com/EmbarkStudios/cargo-deny) for instructions and details of the format and capabilities.
+
+This action will run `cargo-deny check` and report failure if any banned crates or disallowed open souce licenses are found used in the crate or its dependencies.
+
+### Example pipeline
+
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  cargo-deny:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: EmbarkStudios/cargo-deny-action@master # TODO: update to stable version when we have it
+```
 
 ## Contributing
 
