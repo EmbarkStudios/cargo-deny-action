@@ -10,5 +10,8 @@ jobs:
       - name: Build Docker image
         run: docker build -t test-cargo-deny .
 
-      - name: Run Docker image
+      - name: Run list
+        run: docker run -v ${PWD}/test:/test --workdir /test test-cargo-deny list
+
+      - name: Run check
         run: docker run -v ${PWD}/test:/test --workdir /test test-cargo-deny check
