@@ -11,7 +11,7 @@ jobs:
         run: docker build -t test-cargo-deny .
 
       - name: Run list
-        run: docker run -v ${PWD}/test:/test --workdir /test test-cargo-deny list
+        run: docker run -v ${PWD}/test:/test test-cargo-deny --context test list
 
       - name: Run check
-        run: docker run -v ${PWD}/test:/test --workdir /test test-cargo-deny check
+        run: docker run -v ${PWD}/test:/test test-cargo-deny --context test check
