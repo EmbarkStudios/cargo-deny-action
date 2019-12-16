@@ -35,6 +35,7 @@ Repositories using this action (PR to add your repo):
 - [ash-molten](https://github.com/EmbarkStudios/ash-molten)
 - [cargo-about](https://github.com/EmbarkStudios/cargo-about)
 - [cargo-fetcher](https://github.com/EmbarkStudios/cargo-fetcher)
+- [glam-rs](https://github.com/bitshifter/glam-rs)
 - [physx-rs](https://github.com/EmbarkStudios/physx-rs)
 - [tame-gcs](https://github.com/EmbarkStudios/tame-gcs)
 - [tame-oauth](https://github.com/EmbarkStudios/tame-oauth)
