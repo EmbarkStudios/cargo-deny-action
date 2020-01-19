@@ -37,9 +37,11 @@ Repositories using this action (PR to add your repo):
 - [cargo-fetcher](https://github.com/EmbarkStudios/cargo-fetcher)
 - [glam-rs](https://github.com/bitshifter/glam-rs)
 - [physx-rs](https://github.com/EmbarkStudios/physx-rs)
+- [smush](https://github.com/gwihlidal/smush-rs)
 - [tame-gcs](https://github.com/EmbarkStudios/tame-gcs)
 - [tame-oauth](https://github.com/EmbarkStudios/tame-oauth)
 - [texture-synthesis](https://github.com/EmbarkStudios/texture-synthesis)
+- [tonic](https://github.com/hyperium/tonic)
 
 ## Contributing
 
