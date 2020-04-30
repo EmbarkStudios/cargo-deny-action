@@ -6,8 +6,6 @@
 
 GitHub Action for running [`cargo-deny`](https://github.com/EmbarkStudios/cargo-deny) to help manage Cargo crate dependencies and validate licenses.
 
-🚧 This repo is still work-in-progress `v0`, feel free to test it but avoid rely on it until `v1` (see [#1](https://github.com/EmbarkStudios/cargo-deny-action/issues/1)) 🚧
-
 ## Usage
 
 Create a `deny.toml` file in the root of the repo to use as rules for the action ([example](https://github.com/EmbarkStudios/cargo-deny/blob/master/deny.toml)).
@@ -25,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: EmbarkStudios/cargo-deny-action@v0
+    - uses: EmbarkStudios/cargo-deny-action@v1
 ```
 
 ## Users
