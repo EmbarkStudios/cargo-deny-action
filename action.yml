@@ -11,9 +11,15 @@ inputs:
     description: "The command to run with cargo-deny"
     required: false
     default: "check"
+  log-level:
+    description: "The log level for cargo-deny"
+    required: false
+    default: "warn"
 
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
+    - --log-level
+    - ${{ inputs.log-level }}
     - ${{ inputs.command }}
