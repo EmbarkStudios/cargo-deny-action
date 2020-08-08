@@ -15,10 +15,16 @@ inputs:
     description: "The log level for cargo-deny"
     required: false
     default: "warn"
+  use-latest:
+    description: "Always runs the latest release of cargo-deny"
+    required: false
+    default: "false"
 
 runs:
   using: "docker"
   image: "Dockerfile"
+  env:
+    USE_LATEST: ${{ inputs.use-latest }}
   args:
     - --log-level
     - ${{ inputs.log-level }}

@@ -1,6 +1,6 @@
 FROM rust:alpine
 
-RUN apk add --no-cache curl
+RUN apk add --no-cache curl grep
 
 ENV version 0.7.3
 
