@@ -12,4 +12,5 @@ if [ "$USE_LATEST" = "true" ]; then
     fi
 fi
 
+/cargo-deny -V
 /cargo-deny $*
