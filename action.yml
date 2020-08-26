@@ -11,6 +11,10 @@ inputs:
     description: "The command to run with cargo-deny"
     required: false
     default: "check"
+  arguments:
+    description: "The arguments to pass to cargo-deny"
+    required: false
+    default: "--all-features"
   log-level:
     description: "The log level for cargo-deny"
     required: false
@@ -22,4 +26,5 @@ runs:
   args:
     - --log-level
     - ${{ inputs.log-level }}
+    - ${{ inputs.arguments }}
     - ${{ inputs.command }}

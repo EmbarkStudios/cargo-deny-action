@@ -11,7 +11,13 @@ GitHub Action for running [`cargo-deny`](https://github.com/EmbarkStudios/cargo-
 Create a `deny.toml` file in the root of the repo to use as rules for the action ([example](https://github.com/EmbarkStudios/cargo-deny/blob/master/deny.toml)).
 See [`cargo-deny`](https://github.com/EmbarkStudios/cargo-deny) for instructions and details of the format and capabilities.
 
-This action will run `cargo-deny check` and report failure if any banned crates or disallowed open souce licenses are found used in the crate or its dependencies.
+This action will run `cargo-deny check` and report failure if any banned crates or disallowed open source licenses are found used in the crate or its dependencies.
+
+The action has three optional inputs
+
+* `log-level`: The log level to use for `cargo-deny`, default is `warn`
+* `command`: The command to use for `cargo-deny`, default is `check`
+* `arguments`: The argument to pass to `cargo-deny`, default is `--all-features`
 
 ### Example pipeline
 
@@ -24,6 +30,23 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: EmbarkStudios/cargo-deny-action@v1
+```
+
+### Example pipeline with custom options using default values
+
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  cargo-deny:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: EmbarkStudios/cargo-deny-action@v1
+      with:
+        log-level: warn
+        command: check
+        arguments: --all-features
 ```
 
 ## Users
