@@ -17,7 +17,7 @@ The action has three optional inputs
 
 * `log-level`: The log level to use for `cargo-deny`, default is `warn`
 * `command`: The command to use for `cargo-deny`, default is `check`
-* `arguments`: The argument to pass to `cargo-deny`, default is `--all-features`
+* `arguments`: The argument to pass to `cargo-deny`, default is `--all-features`. See [Common Options](https://embarkstudios.github.io/cargo-deny/cli/common.html) for a list of the available options.
 
 ### Example pipeline
 
