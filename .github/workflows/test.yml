@@ -14,4 +14,4 @@ jobs:
         run: docker run -v ${PWD}/test:/test test-cargo-deny --manifest-path test/Cargo.toml list
 
       - name: Run check
-        run: docker run -v ${PWD}/test:/test test-cargo-deny --manifest-path test/Cargo.toml check
+        run: docker run -v ${PWD}/test:/test test-cargo-deny --manifest-path test/Cargo.toml --all-features check
