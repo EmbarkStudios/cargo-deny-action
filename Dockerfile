@@ -12,7 +12,7 @@ RUN set -eux; \
     git clone https://github.com/EmbarkStudios/cargo-deny code; \
     cd code; \
     git checkout $deny_version; \
-    cargo build --release --target x86_64-unknown-linux-musl; \
+    cargo build --release --target x86_64-unknown-linux-musl --features standalone; \
     strip target/x86_64-unknown-linux-musl/release/cargo-deny; \
     cp target/x86_64-unknown-linux-musl/release/cargo-deny /cargo-deny;
 
