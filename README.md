@@ -87,6 +87,7 @@ Repositories using this action (PR to add your repo):
 - [tame-oauth](https://github.com/EmbarkStudios/tame-oauth)
 - [texture-synthesis](https://github.com/EmbarkStudios/texture-synthesis)
 - [tonic](https://github.com/hyperium/tonic)
+- ⚡️[dotenv-linter](https://github.com/dotenv-linter/dotenv-linter)
 
 ## Contributing
 
