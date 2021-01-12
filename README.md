@@ -81,6 +81,7 @@ Repositories using this action (PR to add your repo):
 - [cargo-about](https://github.com/EmbarkStudios/cargo-about)
 - [cargo-fetcher](https://github.com/EmbarkStudios/cargo-fetcher)
 - [glam-rs](https://github.com/bitshifter/glam-rs)
+- [linkerd2-proxy](https://github.com/linkerd/linkerd2-proxy)
 - [physx-rs](https://github.com/EmbarkStudios/physx-rs)
 - [smush](https://github.com/gwihlidal/smush-rs)
 - [tame-gcs](https://github.com/EmbarkStudios/tame-gcs)
