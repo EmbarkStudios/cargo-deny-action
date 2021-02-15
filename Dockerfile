@@ -10,10 +10,10 @@ RUN set -eux; \
 # Ensure rustup is up to date.
 RUN bash -c "sh <(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs) -y"
 
-COPY entrypoint.sh /entrypoint.sh
-
 # Pin rust to the version of our base image, regardless of any settings
 # in the repo itself
-RUN rustup override set 1.50.0
+RUN mkdir -p /github/workspace && rustup override set --path /github/workspace 1.50.0
+
+COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
