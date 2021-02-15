@@ -1,4 +1,4 @@
-FROM rust:1.48-alpine3.12
+FROM rust:1.50-alpine3.12
 
 ENV deny_version=0.8.5
 
