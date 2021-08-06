@@ -78,6 +78,7 @@ jobs:
 Repositories using this action (PR to add your repo):
 
 - [ash-molten](https://github.com/EmbarkStudios/ash-molten)
+- [asn1rs](https://github.com/kellerkindt/asn1rs)
 - [cargo-about](https://github.com/EmbarkStudios/cargo-about)
 - [cargo-fetcher](https://github.com/EmbarkStudios/cargo-fetcher)
 - [glam-rs](https://github.com/bitshifter/glam-rs)
