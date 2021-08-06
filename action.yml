@@ -22,7 +22,7 @@ inputs:
 
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "ghcr.io/embarkstudios/cargo-deny-action:latest"
   args:
     - --log-level
     - ${{ inputs.log-level }}
