@@ -1,6 +1,6 @@
-FROM rust:1.51-alpine3.12
+FROM rust:1.57-alpine
 
-ENV deny_version="0.9.1"
+ENV deny_version="0.10.3"
 
 RUN set -eux; \
     apk update; \
