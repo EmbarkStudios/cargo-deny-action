@@ -15,3 +15,4 @@ git tag -a "v$version" -m "Release $version - cargo-deny $deny_version"
 git tag -fa "v1" -m "Release $version - cargo-deny $deny_version"
 
 git push --tags --force
+git push
