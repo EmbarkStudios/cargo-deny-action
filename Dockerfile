@@ -1,4 +1,4 @@
-FROM rust:1.58.1-alpine3.15
+FROM rust:1.59.0-alpine3.15@sha256:b57e3379714cf4f784ce1de9e6143eda24b385085b94e7f3a4ff115d71ee986c
 
 ENV deny_version="0.11.3"
 
