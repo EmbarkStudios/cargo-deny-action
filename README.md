@@ -1,10 +1,14 @@
+<div align="center">
+
 # ❌ cargo-deny GitHub Action
+
+**GitHub Action for running [`cargo-deny`](https://github.com/EmbarkStudios/cargo-deny) to help manage Cargo crate dependencies and validate licenses.**
 
 [![Build Status](https://github.com/EmbarkStudios/cargo-deny-action/workflows/Test/badge.svg)](https://github.com/EmbarkStudios/cargo-deny-action/actions?workflow=Test)
 [![Contributor Covenant](https://img.shields.io/badge/contributor%20covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 [![Embark](https://img.shields.io/badge/embark-open%20source-blueviolet.svg)](https://embark.dev)
 
-GitHub Action for running [`cargo-deny`](https://github.com/EmbarkStudios/cargo-deny) to help manage Cargo crate dependencies and validate licenses.
+</div>
 
 ## Usage
 
@@ -15,6 +19,7 @@ This action will run `cargo-deny check` and report failure if any banned crates 
 
 The action has three optional inputs
 
+* `rust-version`: The rust/cargo version to use, updated before cargo-deny is run. Defaults to the version in the image, which is currently **1.59.0**.
 * `log-level`: The log level to use for `cargo-deny`, default is `warn`
 * `command`: The command to use for `cargo-deny`, default is `check`
 * `arguments`: The argument to pass to `cargo-deny`, default is `--all-features`. See [Common Options](https://embarkstudios.github.io/cargo-deny/cli/common.html) for a list of the available options.
