@@ -11,4 +11,4 @@ fi
 
 shift
 
-cargo-deny "$@"
+cargo-deny $*
