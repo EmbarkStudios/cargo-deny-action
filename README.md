@@ -49,6 +49,24 @@ jobs:
         arguments: --all-features
 ```
 
+### Use specific Rust version
+
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  cargo-deny:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: EmbarkStudios/cargo-deny-action@v1
+      with:
+        rust-version: "1.59.0"
+        log-level: warn
+        command: check
+        arguments: --all-features
+```
+
 ### Recommended pipeline to avoid sudden breakages
 
 ```yaml
@@ -77,20 +95,20 @@ jobs:
 
 Repositories using this action (PR to add your repo):
 
-- [ash-molten](https://github.com/EmbarkStudios/ash-molten)
-- [asn1rs](https://github.com/kellerkindt/asn1rs)
-- [cargo-about](https://github.com/EmbarkStudios/cargo-about)
-- [cargo-fetcher](https://github.com/EmbarkStudios/cargo-fetcher)
-- [glam-rs](https://github.com/bitshifter/glam-rs)
-- [linkerd2-proxy](https://github.com/linkerd/linkerd2-proxy)
-- [PackSquash](https://github.com/ComunidadAylas/PackSquash)
-- [physx-rs](https://github.com/EmbarkStudios/physx-rs)
-- [smush](https://github.com/gwihlidal/smush-rs)
-- [tame-gcs](https://github.com/EmbarkStudios/tame-gcs)
-- [tame-oauth](https://github.com/EmbarkStudios/tame-oauth)
-- [texture-synthesis](https://github.com/EmbarkStudios/texture-synthesis)
-- [tonic](https://github.com/hyperium/tonic)
-- ⚡️[dotenv-linter](https://github.com/dotenv-linter/dotenv-linter)
+* [ash-molten](https://github.com/EmbarkStudios/ash-molten)
+* [asn1rs](https://github.com/kellerkindt/asn1rs)
+* [cargo-about](https://github.com/EmbarkStudios/cargo-about)
+* [cargo-fetcher](https://github.com/EmbarkStudios/cargo-fetcher)
+* [glam-rs](https://github.com/bitshifter/glam-rs)
+* [linkerd2-proxy](https://github.com/linkerd/linkerd2-proxy)
+* [PackSquash](https://github.com/ComunidadAylas/PackSquash)
+* [physx-rs](https://github.com/EmbarkStudios/physx-rs)
+* [smush](https://github.com/gwihlidal/smush-rs)
+* [tame-gcs](https://github.com/EmbarkStudios/tame-gcs)
+* [tame-oauth](https://github.com/EmbarkStudios/tame-oauth)
+* [texture-synthesis](https://github.com/EmbarkStudios/texture-synthesis)
+* [tonic](https://github.com/hyperium/tonic)
+* ⚡️[dotenv-linter](https://github.com/dotenv-linter/dotenv-linter)
 
 ## Contributing
 
@@ -102,8 +120,8 @@ Please read our [Contributor Guide](CONTRIBUTING.md) for more information on how
 
 Licensed under either of
 
-* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
-* MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
+* MIT license ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
 
 at your option.
 

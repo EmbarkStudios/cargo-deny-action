@@ -19,11 +19,16 @@ inputs:
     description: "The log level for cargo-deny"
     required: false
     default: "warn"
+  rust-version:
+    description: "The Rust version that is updated to before running cargo deny"
+    required: false
+    default: ""
 
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
+    - ${{ inputs.rust-version }}
     - --log-level
     - ${{ inputs.log-level }}
     - ${{ inputs.arguments }}
