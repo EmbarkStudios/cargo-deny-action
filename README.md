@@ -106,6 +106,7 @@ Repositories using this action (PR to add your repo):
 * [cargo-fetcher](https://github.com/EmbarkStudios/cargo-fetcher)
 * [glam-rs](https://github.com/bitshifter/glam-rs)
 * [linkerd2-proxy](https://github.com/linkerd/linkerd2-proxy)
+* [OctaSine](https://github.com/greatest-ape/OctaSine)
 * [PackSquash](https://github.com/ComunidadAylas/PackSquash)
 * [physx-rs](https://github.com/EmbarkStudios/physx-rs)
 * [smush](https://github.com/gwihlidal/smush-rs)
