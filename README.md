@@ -19,7 +19,7 @@ This action will run `cargo-deny check` and report failure if any banned crates 
 
 The action has three optional inputs
 
-* `rust-version`: The rust/cargo version to use, updated before cargo-deny is run. Defaults to the version in the image, which is currently **1.59.0**.
+* `rust-version`: The rust/cargo version to use, updated before cargo-deny is run. Defaults to the version in the image, which is currently **1.60.0**.
 * `log-level`: The log level to use for `cargo-deny`, default is `warn`
 * `command`: The command to use for `cargo-deny`, default is `check`
 * `arguments`: The argument to pass to `cargo-deny`, default is `--all-features`. See [Common Options](https://embarkstudios.github.io/cargo-deny/cli/common.html) for a list of the available options.
@@ -68,7 +68,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: EmbarkStudios/cargo-deny-action@v1
       with:
-        rust-version: "1.59.0"
+        rust-version: "1.60.0"
         log-level: warn
         command: check
         arguments: --all-features
