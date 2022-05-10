@@ -6,7 +6,8 @@ deny_version=$2
 
 awk -i inplace -v dvers="$deny_version" '{sub(/ENV\sdeny_version=[^\n]+/,"ENV deny_version=\"" dvers "\"")}1' Dockerfile
 
-git add Dockerfile && git commit -m "Bump to $deny_version"
+git add Dockerfile
+git diff-index --quiet HEAD || git commit -m "Bump to $deny_version"
 
 # Add the new tag
 git tag -a "v$version" -m "Release $version - cargo-deny $deny_version"
