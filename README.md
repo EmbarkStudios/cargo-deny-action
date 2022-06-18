@@ -74,7 +74,29 @@ jobs:
         arguments: --all-features
 ```
 
-### Recommended pipeline to avoid sudden breakages
+### Recommended pipeline if not using advisories, to only run on dependency changes
+
+If you use this pipeline, you should have `Cargo.lock` files checked into your
+repository.
+
+```yaml
+name: CI
+on:
+  pull_request:
+    paths:
+      - '**/Cargo.lock'
+      - '**/Cargo.toml'
+jobs:
+  cargo-deny:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: EmbarkStudios/cargo-deny-action@v1
+      with:
+        command: check bans licenses sources
+```
+
+### Recommended pipeline if using advisories, to avoid sudden breakages
 
 ```yaml
 name: CI
