@@ -23,7 +23,8 @@ The action has three optional inputs
 * `log-level`: The log level to use for `cargo-deny`, default is `warn`
 * `command`: The command to use for `cargo-deny`, default is `check`
 * `arguments`: The argument to pass to `cargo-deny`, default is `--all-features`. See [Common Options](https://embarkstudios.github.io/cargo-deny/cli/common.html) for a list of the available options.
-* `command-arguments` The argument to pass to the command, default is emtpy. See options for [each command](https://embarkstudios.github.io/cargo-deny/cli/index.html). 
+* `command-arguments` The argument to pass to the command, default is emtpy. See options for [each command](https://embarkstudios.github.io/cargo-deny/cli/index.html).
+* `credentials` This argument stores the credentials in the file `$HOME/git-credentials`, and configures git to use it. The credential must match the format `https://user:pass@github.com`
 
 ### Example pipeline
 
@@ -54,6 +55,7 @@ jobs:
         command: check
         arguments: --all-features
         command-arguments: ""
+        credentials: https://${{ secrets.GITHUB_USER }}:${{ secrets.GITHUB_PAT }}@github.com
 ```
 
 ### Use specific Rust version

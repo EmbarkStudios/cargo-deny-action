@@ -11,7 +11,7 @@ jobs:
         run: docker build -t test-cargo-deny .
 
       - name: Run list
-        run: docker run -v ${PWD}/test:/test test-cargo-deny "" --manifest-path test/Cargo.toml list
+        run: docker run -v ${PWD}/test:/test test-cargo-deny "" "" --manifest-path test/Cargo.toml list
 
       - name: Run check
-        run: docker run -v ${PWD}/test:/test test-cargo-deny 1.60.0 --manifest-path test/Cargo.toml --all-features check
+        run: docker run -v ${PWD}/test:/test test-cargo-deny 1.60.0 "" --manifest-path test/Cargo.toml --all-features check
