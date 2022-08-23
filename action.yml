@@ -26,20 +26,39 @@ inputs:
   rust-version:
     description: "The Rust version that is updated to before running cargo deny"
     required: false
-    default: ""
+    default: "stable"
   credentials:
     description: "The git credentials for credential.helper store using github username and github's private access token (PAT)"
     required: false
     default: ""
 
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.rust-version }}
-    - ${{ inputs.credentials }}
-    - --log-level
-    - ${{ inputs.log-level }}
-    - ${{ inputs.arguments }}
-    - ${{ inputs.command }}
-    - ${{ inputs.command-arguments }}
+  using: composite
+  steps:
+    - uses: actions/checkout@v3.0.2
+    - uses: actions-rs/toolchain@v1.0.6
+      with:
+        profile: minimal
+        toolchain: ${{ inputs.rust-version }}
+    - uses: Swatinem/rust-cache@v2.0.0
+    - name: Install cargo-deny
+      shell: bash
+      run: cargo install cargo-deny
+    - name: Set up custom credentials
+      if: ${{ inputs.credentials != '' }}
+      shell: bash
+      run: |
+        git config --global credential.helper store
+        git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/
+        git config --global --add url.https://github.com/.insteadOf git@github.com:
+
+        echo ${{ inputs.credentials != '' }} > $HOME/.git-credentials
+        chmod 600 $HOME/.git-credentials
+    - name: Run cargo-deny
+      shell: bash
+      run: |
+        cargo deny \
+          --log-level ${{ inputs.log-level }} \
+          ${{ inputs.arguments }} \
+          ${{ inputs.command }} \
+          ${{ inputs.command-arguments }}
