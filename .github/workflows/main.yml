@@ -23,7 +23,6 @@ jobs:
     name: Test action
     steps:
       - uses: actions/checkout@v3
-      - uses: Swatinem/rust-cache@v2
 
       - name: Run list
         uses: ./
@@ -41,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [pre-commit, test]
     steps:
-      - uses: google-github-actions/release-please-action@v3.4.1
+      - uses: google-github-actions/release-please-action@v3
         id: release
         with:
           release-type: simple

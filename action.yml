@@ -35,10 +35,9 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: actions/checkout@v3.0.2
-    - uses: actions-rs/toolchain@v1.0.6
+    - uses: actions/checkout@v3
+    - uses: dtolnay/rust-toolchain@stable
       with:
-        profile: minimal
         toolchain: ${{ inputs.rust-version }}
     - uses: Swatinem/rust-cache@v2.0.1
     - name: Install cargo-deny
@@ -51,7 +50,6 @@ runs:
         git config --global credential.helper store
         git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/
         git config --global --add url.https://github.com/.insteadOf git@github.com:
-
         echo ${{ inputs.credentials != '' }} > $HOME/.git-credentials
         chmod 600 $HOME/.git-credentials
     - name: Run cargo-deny
