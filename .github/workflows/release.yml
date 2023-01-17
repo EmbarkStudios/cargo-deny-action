@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  ACTION_NAME: cargo-deny
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          release-type: simple
+          command: github-release
+          package-name: ${{ env.ACTION_NAME }}
+          bump-minor-pre-major: true
+      - uses: actions/checkout@v3
+      - name: Tag major and minor versions in Git
+        if: ${{ steps.release.outputs.release_created }}
+        uses: jacobsvante/tag-major-minor-action@v0
+        with:
+          major: ${{ steps.release.outputs.major }}
+          minor: ${{ steps.release.outputs.minor }}

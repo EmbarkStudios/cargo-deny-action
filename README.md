@@ -1,141 +1,34 @@
-<div align="center">
+<!-- action-docs-description -->
 
-# ❌ cargo-deny GitHub Action
+## Description
 
-**GitHub Action for running [`cargo-deny`](https://github.com/EmbarkStudios/cargo-deny) to help manage Cargo crate dependencies and validate licenses.**
+Help manage Cargo crate dependencies and validate licenses
 
-[![Build Status](https://github.com/EmbarkStudios/cargo-deny-action/workflows/Test/badge.svg)](https://github.com/EmbarkStudios/cargo-deny-action/actions?workflow=Test)
-[![Contributor Covenant](https://img.shields.io/badge/contributor%20covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
-[![Embark](https://img.shields.io/badge/embark-open%20source-blueviolet.svg)](https://embark.dev)
+<!-- action-docs-description -->
 
-</div>
+<!-- action-docs-inputs -->
 
-## Usage
+## Inputs
 
-Create a `deny.toml` file in the root of the repo to use as rules for the action ([example](https://github.com/EmbarkStudios/cargo-deny/blob/master/deny.toml)).
-See [`cargo-deny`](https://github.com/EmbarkStudios/cargo-deny) for instructions and details of the format and capabilities.
+| parameter         | description                                                                                                   | required | default        |
+| ----------------- | ------------------------------------------------------------------------------------------------------------- | -------- | -------------- |
+| command           | The command to run with cargo-deny                                                                            | `false`  | check          |
+| arguments         | The arguments to pass to cargo-deny                                                                           | `false`  | --all-features |
+| command-arguments | The arguments to pass to the command                                                                          | `false`  |                |
+| log-level         | The log level for cargo-deny                                                                                  | `false`  | warn           |
+| rust-version      | The Rust version that is updated to before running cargo deny                                                 | `false`  | stable         |
+| credentials       | The git credentials for credential.helper store using github username and github's private access token (PAT) | `false`  |                |
 
-This action will run `cargo-deny check` and report failure if any banned crates or disallowed open source licenses are found used in the crate or its dependencies.
+<!-- action-docs-inputs -->
 
-The action has three optional inputs
+<!-- action-docs-outputs -->
 
-* `rust-version`: The rust/cargo version to use, updated before cargo-deny is run. Defaults to the version in the image, which is currently **1.60.0**.
-* `log-level`: The log level to use for `cargo-deny`, default is `warn`
-* `command`: The command to use for `cargo-deny`, default is `check`
-* `arguments`: The argument to pass to `cargo-deny`, default is `--all-features`. See [Common Options](https://embarkstudios.github.io/cargo-deny/cli/common.html) for a list of the available options.
-* `command-arguments` The argument to pass to the command, default is emtpy. See options for [each command](https://embarkstudios.github.io/cargo-deny/cli/index.html).
-* `credentials` This argument stores the credentials in the file `$HOME/git-credentials`, and configures git to use it. The credential must match the format `https://user:pass@github.com`
+<!-- action-docs-outputs -->
 
-### Example pipeline
+<!-- action-docs-runs -->
 
-```yaml
-name: CI
-on: [push, pull_request]
-jobs:
-  cargo-deny:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: EmbarkStudios/cargo-deny-action@v1
-```
+## Runs
 
-### Example pipeline with custom options using default values
+This action is a `composite` action.
 
-```yaml
-name: CI
-on: [push, pull_request]
-jobs:
-  cargo-deny:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: EmbarkStudios/cargo-deny-action@v1
-      with:
-        log-level: warn
-        command: check
-        arguments: --all-features
-        command-arguments: ""
-        credentials: https://${{ secrets.GITHUB_USER }}:${{ secrets.GITHUB_PAT }}@github.com
-```
-
-### Use specific Rust version
-
-```yaml
-name: CI
-on: [push, pull_request]
-jobs:
-  cargo-deny:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: EmbarkStudios/cargo-deny-action@v1
-      with:
-        rust-version: "1.60.0"
-        log-level: warn
-        command: check
-        arguments: --all-features
-```
-
-### Recommended pipeline to avoid sudden breakages
-
-```yaml
-name: CI
-on: [push, pull_request]
-jobs:
-  cargo-deny:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        checks:
-          - advisories
-          - bans licenses sources
-
-    # Prevent sudden announcement of a new advisory from failing ci:
-    continue-on-error: ${{ matrix.checks == 'advisories' }}
-
-    steps:
-    - uses: actions/checkout@v2
-    - uses: EmbarkStudios/cargo-deny-action@v1
-      with:
-        command: check ${{ matrix.checks }}
-```
-
-## Users
-
-Repositories using this action (PR to add your repo):
-
-* [ash-molten](https://github.com/EmbarkStudios/ash-molten)
-* [asn1rs](https://github.com/kellerkindt/asn1rs)
-* [cargo-about](https://github.com/EmbarkStudios/cargo-about)
-* [cargo-fetcher](https://github.com/EmbarkStudios/cargo-fetcher)
-* [gitoxide](https://github.com/Byron/gitoxide)
-* [glam-rs](https://github.com/bitshifter/glam-rs)
-* [linkerd2-proxy](https://github.com/linkerd/linkerd2-proxy)
-* [OctaSine](https://github.com/greatest-ape/OctaSine)
-* [PackSquash](https://github.com/ComunidadAylas/PackSquash)
-* [physx-rs](https://github.com/EmbarkStudios/physx-rs)
-* [smush](https://github.com/gwihlidal/smush-rs)
-* [tame-gcs](https://github.com/EmbarkStudios/tame-gcs)
-* [tame-oauth](https://github.com/EmbarkStudios/tame-oauth)
-* [texture-synthesis](https://github.com/EmbarkStudios/texture-synthesis)
-* [tonic](https://github.com/hyperium/tonic)
-* ⚡️[dotenv-linter](https://github.com/dotenv-linter/dotenv-linter)
-
-## Contributing
-
-We welcome community contributions to this project.
-
-Please read our [Contributor Guide](CONTRIBUTING.md) for more information on how to get started.
-
-## License
-
-Licensed under either of
-
-* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or <http://www.apache.org/licenses/LICENSE-2.0>)
-* MIT license ([LICENSE-MIT](LICENSE-MIT) or <http://opensource.org/licenses/MIT>)
-
-at your option.
-
-### Contribution
-
-Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
+<!-- action-docs-runs -->

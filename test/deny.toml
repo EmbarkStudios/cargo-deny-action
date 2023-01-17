@@ -2,7 +2,7 @@
 multiple-versions = "deny"
 deny = [
     { name = "openssl" },
-    
+
     # deprecated/abandoned
     { name = "term" },              # term is not fully maintained, and termcolor is replacing it
     { name = "quickersort" },       # explicitly deprecated
