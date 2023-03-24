@@ -4,7 +4,7 @@ ENV deny_version="0.13.5"
 
 RUN set -eux; \
     apk update; \
-    apk add bash curl git; \
+    apk add bash curl git tar; \
     curl --silent -L https://github.com/EmbarkStudios/cargo-deny/releases/download/$deny_version/cargo-deny-$deny_version-x86_64-unknown-linux-musl.tar.gz | tar -xzv -C /usr/bin --strip-components=1;
 
 # Ensure rustup is up to date.
