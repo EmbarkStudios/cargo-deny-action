@@ -90,9 +90,9 @@ on:
       - '**/Cargo.toml'
 jobs:
   cargo-deny:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: EmbarkStudios/cargo-deny-action@v1
       with:
         command: check bans licenses sources
@@ -105,7 +105,7 @@ name: CI
 on: [push, pull_request]
 jobs:
   cargo-deny:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         checks:
