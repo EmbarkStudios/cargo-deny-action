@@ -15,3 +15,13 @@ jobs:
 
       - name: Run check
         run: docker run -v ${PWD}/test:/test test-cargo-deny 1.70.0 "" --manifest-path test/Cargo.toml --all-features check
+
+  # Ensures the action in the PR still works
+  test:
+    runs-on: ubuntu-22.04
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: EmbarkStudios/cargo-deny-action@fix # change branch name to PR branch if you are changing it
+        # with:
+        #   manifest-path: test/Cargo.toml
