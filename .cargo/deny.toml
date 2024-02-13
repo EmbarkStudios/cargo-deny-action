@@ -1,2 +1,2 @@
-[bans]
-deny = [{ name = "openssl" }]
+[licenses]
+allow = ["Unicode-DFS-2016", "MIT", "Apache-2.0"]
