@@ -142,6 +142,7 @@ Repositories using this action (PR to add your repo):
 * [texture-synthesis](https://github.com/EmbarkStudios/texture-synthesis)
 * [tonic](https://github.com/hyperium/tonic)
 * ⚡️[dotenv-linter](https://github.com/dotenv-linter/dotenv-linter)
+* [wasm-oidc-plugin](https://github.com/antonengelhardt/wasm-oidc-plugin)
 
 ## Contributing
 
