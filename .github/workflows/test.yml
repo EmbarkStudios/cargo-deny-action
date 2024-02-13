@@ -22,6 +22,6 @@ jobs:
     if: github.event_name == 'pull_request'
     steps:
       - uses: actions/checkout@v4
-      - uses: EmbarkStudios/cargo-deny-action@v1
-        with:
-          manifest-path: test/Cargo.toml
+      - uses: EmbarkStudios/cargo-deny-action@fix
+        # with:
+        #   manifest-path: test/Cargo.toml

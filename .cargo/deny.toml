@@ -1,0 +1,2 @@
+[bans]
+deny = [{ name = "openssl" }]

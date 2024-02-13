@@ -22,7 +22,7 @@ inputs:
   manifest-path:
     description: "Repo root relative path to the Cargo manifest to check"
     required: false
-    default: "Cargo.toml"
+    default: "./Cargo.toml"
   log-level:
     description: "The log level for cargo-deny"
     required: false
