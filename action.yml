@@ -19,6 +19,10 @@ inputs:
     description: "The arguments to pass to the command"
     required: false
     default: ""
+  manifest-path:
+    description: "Repo root relative path to the Cargo manifest to check"
+    required: false
+    default: "Cargo.toml"
   log-level:
     description: "The log level for cargo-deny"
     required: false
@@ -40,6 +44,8 @@ runs:
     - ${{ inputs.credentials }}
     - --log-level
     - ${{ inputs.log-level }}
+    - --manifest-path
+    - ${{ inputs.manifest-path }}
     - ${{ inputs.arguments }}
     - ${{ inputs.command }}
     - ${{ inputs.command-arguments }}
