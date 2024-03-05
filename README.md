@@ -19,10 +19,11 @@ This action will run `cargo-deny check` and report failure if any banned crates 
 
 The action has three optional inputs
 
-* `rust-version`: The rust/cargo version to use, updated before cargo-deny is run. Defaults to the version in the image, which is currently **1.65.0**.
+* `rust-version`: The rust/cargo version to use, updated before cargo-deny is run. Defaults to the version in the image, which is currently **1.71.0**.
 * `log-level`: The log level to use for `cargo-deny`, default is `warn`
 * `command`: The command to use for `cargo-deny`, default is `check`
 * `arguments`: The argument to pass to `cargo-deny`, default is `--all-features`. See [Common Options](https://embarkstudios.github.io/cargo-deny/cli/common.html) for a list of the available options.
+* `manifest-path`: The path to a Cargo.toml file to use as the root. Defaults to `./Cargo.toml`. Note this argument is always passed, so you can't have it in `arguments` as well, just set it it to the value you had in `arguments` if you were using it there.
 * `command-arguments` The argument to pass to the command, default is emtpy. See options for [each command](https://embarkstudios.github.io/cargo-deny/cli/index.html).
 * `credentials` This argument stores the credentials in the file `$HOME/git-credentials`, and configures git to use it. The credential must match the format `https://user:pass@github.com`
 
@@ -52,6 +53,7 @@ jobs:
     - uses: EmbarkStudios/cargo-deny-action@v1
       with:
         log-level: warn
+        manifest-path: ./Cargo.toml
         command: check
         arguments: --all-features
         command-arguments: ""
