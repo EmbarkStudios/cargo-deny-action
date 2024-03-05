@@ -12,8 +12,8 @@ git diff-index --quiet HEAD || git commit -m "Bump to $deny_version"
 # Add the new tag
 git tag -a "v$version" -m "Release $version - cargo-deny $deny_version"
 
-# Move the v1 tag to the new commit
-git tag -fa "v1" -m "Release $version - cargo-deny $deny_version"
+# Move the v2 tag to the new commit
+git tag -fa "v2" -m "Release $version - cargo-deny $deny_version"
 
 git push --tags --force
 git push
