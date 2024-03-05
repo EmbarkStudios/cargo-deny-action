@@ -15,11 +15,15 @@ then
     git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/
     git config --global --add url.https://github.com/.insteadOf git@github.com:
 
-    echo $2 > $HOME/.git-credentials
-    chmod 600 $HOME/.git-credentials
+    echo "$2" > "$HOME/.git-credentials"
+    chmod 600 "$HOME/.git-credentials"
 fi
 
 shift
 shift
+
+# Due to how github actions run containers we need to explicitly force colors
+# as TTY detection fails inside them
+export CARGO_TERM_COLOR="always"
 
 cargo-deny $*
