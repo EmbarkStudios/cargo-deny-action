@@ -35,6 +35,18 @@ inputs:
     description: "The git credentials for credential.helper store using github username and github's private access token (PAT)"
     required: false
     default: ""
+  ssh-key:
+    description: "Set the used ssh key"
+    required: false
+    default: ""
+  ssh-known-hosts:
+    description: "Set ssh known hosts"
+    required: false
+    default: ""
+  use-git-cli:
+    description: "Set CARGO_NET_GIT_FETCH_WITH_CLI"
+    required: false
+    default: "false"
 
 runs:
   using: "docker"
@@ -42,6 +54,9 @@ runs:
   args:
     - ${{ inputs.rust-version }}
     - ${{ inputs.credentials }}
+    - ${{ inputs.ssh-key }}
+    - ${{ inputs.ssh-known-hosts }}
+    - ${{ inputs.use-git-cli }}
     - --log-level
     - ${{ inputs.log-level }}
     - --manifest-path

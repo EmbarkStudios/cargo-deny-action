@@ -1,10 +1,10 @@
-FROM rust:1.71.0-alpine3.18
+FROM rust:1.77.2-alpine3.19
 
-ENV deny_version="0.14.21"
+ENV deny_version="0.14.22"
 
 RUN set -eux; \
     apk update; \
-    apk add bash curl git tar; \
+    apk add bash curl git tar openssh; \
     curl --silent -L https://github.com/EmbarkStudios/cargo-deny/releases/download/$deny_version/cargo-deny-$deny_version-x86_64-unknown-linux-musl.tar.gz | tar -xzv -C /usr/bin --strip-components=1;
 
 # Ensure rustup is up to date.

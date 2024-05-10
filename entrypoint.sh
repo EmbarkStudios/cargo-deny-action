@@ -19,6 +19,30 @@ then
     chmod 600 "$HOME/.git-credentials"
 fi
 
+if [ -n "$3" ]
+then
+    mkdir -p "/root/.ssh"
+    chmod 0700 "/root/.ssh"
+    echo "${3}" > "/root/.ssh/id_rsa"
+    chmod 0600 "/root/.ssh/id_rsa"
+fi
+
+if [ -n "$4" ]
+then
+    mkdir -p "/root/.ssh"
+    chmod 0700 "/root/.ssh"
+    echo "${4}" > "/root/.ssh/known_hosts"
+    chmod 0600 "/root/.ssh/known_hosts"
+fi
+
+if [ -n "$5" ]
+then
+    export CARGO_NET_GIT_FETCH_WITH_CLI="$5"
+fi
+
+shift
+shift
+shift
 shift
 shift
 
