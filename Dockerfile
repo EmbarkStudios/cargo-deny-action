@@ -1,4 +1,4 @@
-FROM rust:1.77.2-alpine3.19
+FROM rust:1.80.0-alpine3.20
 
 ENV deny_version="0.14.22"
 
