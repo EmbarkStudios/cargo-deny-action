@@ -36,7 +36,7 @@ jobs:
   cargo-deny:
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: EmbarkStudios/cargo-deny-action@v1
 ```
 
