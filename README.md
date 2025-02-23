@@ -90,6 +90,7 @@ on:
     paths:
       - '**/Cargo.lock'
       - '**/Cargo.toml'
+      - '**/deny.toml'
 jobs:
   cargo-deny:
     runs-on: ubuntu-22.04
