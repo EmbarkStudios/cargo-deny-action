@@ -18,8 +18,6 @@ skip-tree = [
 ]
 
 [licenses]
-unlicensed = "deny"
-allow-osi-fsf-free = "neither"
 # We want really high confidence when inferring licenses from text
 confidence-threshold = 0.92
 allow = [
