@@ -41,7 +41,7 @@ jobs:
       - name: Run check w/rust-toolchain.toml
         run: |
           mv ./test/rt.toml ./rust-toolchain.toml
-          docker run -v $PWD:/ test-cargo-deny \
+          docker run -v $PWD:/test test-cargo-deny \
             "" \
             "" \
             "" \

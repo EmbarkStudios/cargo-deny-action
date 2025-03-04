@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash
 set -e
 
 PATH=$PATH:/usr/local/cargo/bin
@@ -7,8 +7,6 @@ if [ -n "$1" ]; then
     rustup set profile minimal
     rustup default "$1"
 fi
-
-rustup toolchain install
 
 if [ -n "$2" ]; then
     git config --global credential.helper store
@@ -42,5 +40,8 @@ shift 5
 # Due to how github actions run containers we need to explicitly force colors
 # as TTY detection fails inside them
 export CARGO_TERM_COLOR="always"
+
+# Workaround for rustup 1.28 completely breaking rust-toolchain.toml
+(cd "$(dirname "$4")"; rustup show || rustup toolchain install)
 
 cargo-deny $*
