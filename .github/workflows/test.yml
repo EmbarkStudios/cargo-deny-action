@@ -38,12 +38,16 @@ jobs:
             check \
             ""
 
-  # Ensures the action in the PR still works
-  # test:
-  #   runs-on: ubuntu-22.04
-  #   if: github.event_name == 'pull_request'
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: EmbarkStudios/cargo-deny-action@prep-release # change branch name to PR branch if you are changing it
-  #       # with:
-  #       #   manifest-path: test/Cargo.toml
+      - name: Run check w/rust-toolchain.toml
+        run: |
+          mv ./test/rt.toml ./test/rust-toolchain.toml
+          docker run -v $PWD/test:/test test-cargo-deny \
+            "" \
+            "" \
+            "" \
+            "" \
+            "false" \
+            --log-level warn \
+            --manifest-path test/Cargo.toml \
+            check \
+            ""
