@@ -3,8 +3,11 @@ set -e
 
 PATH=$PATH:/usr/local/cargo/bin
 
-if [ -n "$1" ]
-then
+if [ -f "rust-toolchain.toml" ]; then
+    rm rust-toolchain.toml
+fi
+
+if [ -n "$1" ]; then
     rustup set profile minimal
     rustup default "$1"
 else
@@ -15,34 +18,32 @@ else
     rustup show active-toolchain || rustup toolchain install
 fi
 
-if [ -n "$2" ]
-then
+rustup show
+
+if [ -n "$2" ]; then
     git config --global credential.helper store
     git config --global --replace-all url.https://github.com/.insteadOf ssh://git@github.com/
     git config --global --add url.https://github.com/.insteadOf git@github.com:
 
-    echo "$2" > "$HOME/.git-credentials"
+    echo "$2" >"$HOME/.git-credentials"
     chmod 600 "$HOME/.git-credentials"
 fi
 
-if [ -n "$3" ]
-then
+if [ -n "$3" ]; then
     mkdir -p "/root/.ssh"
     chmod 0700 "/root/.ssh"
-    echo "${3}" > "/root/.ssh/id_rsa"
+    echo "${3}" >"/root/.ssh/id_rsa"
     chmod 0600 "/root/.ssh/id_rsa"
 fi
 
-if [ -n "$4" ]
-then
+if [ -n "$4" ]; then
     mkdir -p "/root/.ssh"
     chmod 0700 "/root/.ssh"
-    echo "${4}" > "/root/.ssh/known_hosts"
+    echo "${4}" >"/root/.ssh/known_hosts"
     chmod 0600 "/root/.ssh/known_hosts"
 fi
 
-if [ -n "$5" ]
-then
+if [ -n "$5" ]; then
     export CARGO_NET_GIT_FETCH_WITH_CLI="$5"
 fi
 
