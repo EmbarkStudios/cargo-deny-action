@@ -7,13 +7,9 @@ if [ -n "$1" ]
 then
     rustup set profile minimal
     rustup default "$1"
-else
-    # Ensure active toolchain is installed if explicit rust-version is not passed.
-    # Starting with v1.28, rustup is not going to install active toolchain by default,
-    # and this is needed to install the active toolchain if it's not installed.
-    # See https://blog.rust-lang.org/2025/03/02/Rustup-1.28.0.html#whats-new-in-rustup-1280
-    rustup show active-toolchain || rustup toolchain install
 fi
+
+rustup toolchain install
 
 if [ -n "$2" ]
 then
