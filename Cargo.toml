@@ -1,6 +1,7 @@
 [package]
 name = "root"
 version = "0.1.0"
+edition = "2024"
 
 [dependencies]
 openssl = "0.10"
