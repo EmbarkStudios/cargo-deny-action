@@ -133,6 +133,7 @@ Repositories using this action (PR to add your repo):
 * [asn1rs](https://github.com/kellerkindt/asn1rs)
 * [cargo-about](https://github.com/EmbarkStudios/cargo-about)
 * [cargo-fetcher](https://github.com/EmbarkStudios/cargo-fetcher)
+* [Defguard](https://github.com/DefGuard/defguard)
 * [gitoxide](https://github.com/Byron/gitoxide)
 * [glam-rs](https://github.com/bitshifter/glam-rs)
 * [linkerd2-proxy](https://github.com/linkerd/linkerd2-proxy)
