@@ -17,7 +17,7 @@ See [`cargo-deny`](https://github.com/EmbarkStudios/cargo-deny) for instructions
 
 This action will run `cargo-deny check` and report failure if any banned crates or disallowed open source licenses are found used in the crate or its dependencies.
 
-The action has three optional inputs
+The action has the following optional inputs
 
 * `rust-version`: The rust/cargo version to use, updated before cargo-deny is run. Defaults to the version in the image, which is currently **1.71.0**.
 * `log-level`: The log level to use for `cargo-deny`, default is `warn`
@@ -26,6 +26,7 @@ The action has three optional inputs
 * `manifest-path`: The path to a Cargo.toml file to use as the root. Defaults to `./Cargo.toml`. Note this argument is always passed, so you can't have it in `arguments` as well, just set it it to the value you had in `arguments` if you were using it there.
 * `command-arguments` The argument to pass to the command, default is emtpy. See options for [each command](https://embarkstudios.github.io/cargo-deny/cli/index.html).
 * `credentials` This argument stores the credentials in the file `$HOME/git-credentials`, and configures git to use it. The credential must match the format `https://user:pass@github.com`
+* `output-file` Write `cargo-deny` stdout to the specified file and expose the path as an action output.
 
 ### Example pipeline
 
@@ -76,6 +77,32 @@ jobs:
         log-level: warn
         command: check
         arguments: --all-features
+```
+
+### Write machine-readable output to a file
+
+`cargo-deny` can write machine-readable formats such as JSON or SARIF to stdout. Set `output-file` to save stdout for another workflow step.
+
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  cargo-deny:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+    - uses: actions/checkout@v4
+    - uses: EmbarkStudios/cargo-deny-action@v2
+      id: cargo-deny
+      with:
+        arguments: --format sarif --all-features
+        output-file: cargo-deny.sarif
+    - uses: github/codeql-action/upload-sarif@v4
+      if: always()
+      with:
+        sarif_file: ${{ steps.cargo-deny.outputs.output-file }}
 ```
 
 ### Recommended pipeline if not using advisories, to only run on dependency changes

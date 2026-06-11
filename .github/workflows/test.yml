@@ -18,6 +18,7 @@ jobs:
             "" \
             "" \
             "false" \
+            "" \
             --log-level warn \
             --manifest-path test/Cargo.toml \
             "" \
@@ -32,6 +33,7 @@ jobs:
             "" \
             "" \
             "false" \
+            "" \
             --log-level warn \
             --manifest-path test/Cargo.toml \
             --all-features \
@@ -47,7 +49,45 @@ jobs:
             "" \
             "" \
             "false" \
+            "" \
             --log-level warn \
             --manifest-path test/Cargo.toml \
             check \
             ""
+
+      - name: Run list with output file
+        run: |
+          output_dir="$(mktemp -d)"
+          docker run -v $PWD/test:/test -v "$output_dir:/output" \
+            -e GITHUB_OUTPUT=/output/github-output \
+            test-cargo-deny \
+            "" \
+            "" \
+            "" \
+            "" \
+            "false" \
+            "/output/licenses.txt" \
+            --log-level warn \
+            --manifest-path test/Cargo.toml \
+            "" \
+            list \
+            ""
+          test -s "$output_dir/licenses.txt"
+          grep '^output-file=/output/licenses.txt$' "$output_dir/github-output"
+
+      - name: Run check with SARIF output file
+        run: |
+          output_dir="$(mktemp -d)"
+          docker run -v $PWD/test:/test -v "$output_dir:/output" test-cargo-deny \
+            "" \
+            "" \
+            "" \
+            "" \
+            "false" \
+            "/output/cargo-deny.sarif" \
+            --log-level warn \
+            --manifest-path test/Cargo.toml \
+            "--format sarif --all-features" \
+            check \
+            ""
+          grep '"version": "2.1.0"' "$output_dir/cargo-deny.sarif"
