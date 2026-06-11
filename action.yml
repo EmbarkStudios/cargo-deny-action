@@ -6,6 +6,10 @@ branding:
   icon: "slash"
   color: "red"
 
+outputs:
+  output-file:
+    description: "Path written by output-file, if set"
+
 inputs:
   command:
     description: "The command to run with cargo-deny"
@@ -47,6 +51,10 @@ inputs:
     description: "Set CARGO_NET_GIT_FETCH_WITH_CLI"
     required: false
     default: "false"
+  output-file:
+    description: "Path to write cargo-deny stdout to"
+    required: false
+    default: ""
 
 runs:
   using: "docker"
@@ -57,6 +65,7 @@ runs:
     - ${{ inputs.ssh-key }}
     - ${{ inputs.ssh-known-hosts }}
     - ${{ inputs.use-git-cli }}
+    - ${{ inputs.output-file }}
     - --log-level
     - ${{ inputs.log-level }}
     - --manifest-path

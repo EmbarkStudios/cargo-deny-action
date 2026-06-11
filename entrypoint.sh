@@ -35,7 +35,9 @@ if [ -n "$5" ]; then
     export CARGO_NET_GIT_FETCH_WITH_CLI="$5"
 fi
 
-shift 5
+output_file="$6"
+
+shift 6
 
 # Due to how github actions run containers we need to explicitly force colors
 # as TTY detection fails inside them
@@ -43,5 +45,20 @@ export CARGO_TERM_COLOR="always"
 
 # Workaround for rustup 1.28 completely breaking rust-toolchain.toml
 (cd "$(dirname "$4")"; rustup show || rustup toolchain install)
+
+if [ -n "$output_file" ]; then
+    mkdir -p "$(dirname "$output_file")"
+
+    set +e
+    cargo-deny $* > "$output_file"
+    status=$?
+    set -e
+
+    if [ -n "$GITHUB_OUTPUT" ]; then
+        echo "output-file=$output_file" >> "$GITHUB_OUTPUT"
+    fi
+
+    exit "$status"
+fi
 
 cargo-deny $*
