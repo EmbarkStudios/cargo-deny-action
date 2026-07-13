@@ -44,7 +44,7 @@ inputs:
     required: false
     default: ""
   use-git-cli:
-    description: "Set CARGO_NET_GIT_FETCH_WITH_CLI"
+    description: "Deprecated, this has no effect"
     required: false
     default: "false"
 
@@ -56,7 +56,6 @@ runs:
     - ${{ inputs.credentials }}
     - ${{ inputs.ssh-key }}
     - ${{ inputs.ssh-known-hosts }}
-    - ${{ inputs.use-git-cli }}
     - --log-level
     - ${{ inputs.log-level }}
     - --manifest-path
