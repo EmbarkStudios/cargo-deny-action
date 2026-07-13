@@ -17,7 +17,6 @@ jobs:
             "" \
             "" \
             "" \
-            "false" \
             --log-level warn \
             --manifest-path test/Cargo.toml \
             "" \
@@ -31,7 +30,6 @@ jobs:
             "" \
             "" \
             "" \
-            "false" \
             --log-level warn \
             --manifest-path test/Cargo.toml \
             --all-features \
@@ -46,7 +44,6 @@ jobs:
             "" \
             "" \
             "" \
-            "false" \
             --log-level warn \
             --manifest-path test/Cargo.toml \
             check \
