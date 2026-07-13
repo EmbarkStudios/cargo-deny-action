@@ -31,11 +31,7 @@ if [ -n "$4" ]; then
     chmod 0600 "/root/.ssh/known_hosts"
 fi
 
-if [ -n "$5" ]; then
-    export CARGO_NET_GIT_FETCH_WITH_CLI="$5"
-fi
-
-shift 5
+shift 4
 
 # Due to how github actions run containers we need to explicitly force colors
 # as TTY detection fails inside them
