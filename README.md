@@ -12,6 +12,8 @@
 
 ## Usage
 
+This Docker container action runs only on Linux runners. For a Windows or macOS workflow, use this action in a separate Linux job, or install and run `cargo-deny` directly on that runner.
+
 Create a `deny.toml` file in the root of the repo to use as rules for the action ([example](https://github.com/EmbarkStudios/cargo-deny/blob/master/deny.toml)).
 See [`cargo-deny`](https://github.com/EmbarkStudios/cargo-deny) for instructions and details of the format and capabilities.
 
